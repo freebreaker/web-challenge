@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Layout } from '@cosmology/react';
 import ConnectWallet from '../../components/wallet-connect/ConnectWallet';
 import ChooseCoins from '../../components/coin-choose-list'
@@ -9,9 +9,11 @@ import { Observer } from "mobx-react-lite";
 
 export default () => {
 
+  const defaultChainId = 'osmosis-1'
+
   const { keplr, getKeplr } = useKeplr()
 
-  const { chainId, setChainId } = useChain('osmosis-1')
+  const { chainId, setChainId } = useChain(defaultChainId)
 
   const { address, renderAddress } = useAddress()
 
@@ -30,10 +32,10 @@ export default () => {
   useEffect(() => {
     if (keplr) {
       window.addEventListener("keplr_keystorechange", () => {
-        renderAddress(chainId)
+        window.location.reload()
       })
     }
-  }, [keplr, chainId])
+  }, [keplr])
 
   return <Observer>
     {

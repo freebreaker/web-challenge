@@ -18,7 +18,7 @@ export default function useAddress(initId = '') {
       const key = await keplr.getKey(chainId)
       return key.bech32Address
     }
-  }, [keplr])
+  }, [keplr, getKeplr])
 
   const renderAddress = (chainId: string) => {
     getAddress(chainId).then((r) => {
