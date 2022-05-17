@@ -1,6 +1,6 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, observable } from "mobx";
 import { SHA256 } from "crypto-js";
-import { getData } from "./api";
+import { getChains, getData } from "./api";
 
 export interface IBlock {
     hash: String;
@@ -13,12 +13,24 @@ export interface ITx {
     created: Date
     status: Number
 }
+
+export interface IChain {
+    chain_id: string
+    chain_name: string
+    imgSrc?: string
+}
+
 export class BlockchainStore {
     blocks: Array<IBlock> = [];
     transactions: Array<ITx> = [];
+    chains: Array<IChain> = []
 
     constructor() {
         makeAutoObservable(this);
+    }
+
+    loadChains = () => {
+        this.chains = getChains()
     }
 
     loadData = () => {
@@ -61,4 +73,3 @@ export class BlockchainStore {
         });
     }
 }
-

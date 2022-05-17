@@ -3165,7 +3165,7 @@
 
 "@keplr-wallet/types@0.10.3":
   version "0.10.3"
-  resolved "https://registry.npmjs.org/@keplr-wallet/types/-/types-0.10.3.tgz#d134e86c51d57652adeeb5ea19729f3bf952b7c8"
+  resolved "https://registry.npmmirror.com/@keplr-wallet/types/-/types-0.10.3.tgz#d134e86c51d57652adeeb5ea19729f3bf952b7c8"
   integrity sha512-DA7LcMMBzs8UbkPyoqwUoQ+IpHppx2dwv8u9tN1uZJKm9JtqgZbdnoA6vMajfxW2nYJFO8qTh1Mtu2rfsg+Smg==
   dependencies:
     "@cosmjs/launchpad" "^0.24.0-alpha.25"
