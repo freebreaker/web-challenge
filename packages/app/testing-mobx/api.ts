@@ -1,6 +1,7 @@
 import { SHA256 } from "crypto-js";
 import { ITx } from "./store";
-import { chains, assets } from '@cosmology/cosmos-registry'
+import { chains } from '@cosmology/cosmos-registry'
+import { assets } from '@cosmology/core'
 export const getData = () => {
     return new Promise<Array<ITx>>((resolve, reject) => {
         setTimeout(() => {
@@ -15,12 +16,12 @@ export const getData = () => {
 }
 
 export const getChains = () => {
-    return chains.map((i: { chain_id: string; chain_name: any; }) => {
-        const currentAsset = assets.find((c: { chain_id: string; }) => c.chain_id === i.chain_id)
+    return chains.map((i: { chain_id: string; chain_name: any; pretty_name: string }) => {
+        const currentAsset = assets.find((c: { name: string; }) => c.name === i.pretty_name)
         return {
             chain_id: i.chain_id,
             chain_name: i.chain_name,
-            imgSrc: currentAsset?.assets[0]?.logo_URIs.png,
+            imgSrc: currentAsset?.logo_URIs.png,
         }
     })
 }
